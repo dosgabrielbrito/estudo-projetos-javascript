@@ -7,18 +7,23 @@ function sortear() {
     let nomerosSorteados = [];
     let numero;
 
-    for (let i = 0; i < inputQuantidade; i++) {
-        numero = obterNumeroAleatorio(inputDe, inputAte);
+    let labelResultado = document.getElementById('resultado');
 
-        while (nomerosSorteados.includes(numero)) {
+    if (inputQuantidade <= ((inputAte - inputDe) + 1) || inputDe < inputAte) {
+        for (let i = 0; i < inputQuantidade; i++) {
             numero = obterNumeroAleatorio(inputDe, inputAte);
-        }
 
-        nomerosSorteados.push(numero);
+            while (nomerosSorteados.includes(numero)) {
+                numero = obterNumeroAleatorio(inputDe, inputAte);
+            }
+
+            nomerosSorteados.push(numero);
+        }
+        labelResultado.innerHTML = `<label class="texto__paragrafo">Números sorteados: ${nomerosSorteados}</label>`;
+    } else {
+        labelResultado.innerHTML = `<label class="texto__paragrafo">Seleção de parâmetros impossível. Favor corrigir.</label>`;
     }
 
-    let labelResultado = document.getElementById('resultado');
-    labelResultado.innerHTML = `<label class="texto__paragrafo">Números sorteados: ${nomerosSorteados}</label>`;
     alterarStatusBotao('btn-reiniciar');
 }
 
