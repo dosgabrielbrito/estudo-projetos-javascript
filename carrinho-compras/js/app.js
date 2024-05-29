@@ -7,6 +7,12 @@ let custCarrinho = [];
 let precoProdutos = [100, 1400, 5000];
 let nomeProdutos = ['Fone de ouvido', 'Celular', 'Oculus VR'];
 
+
+//Zerar produtos:
+document.getElementById('lista-produtos').innerHTML = '';
+document.getElementById('valor-total').innerHTML = `<span class="texto-azul" id="valor-total">R$0</span>`;
+document.getElementById('quantidade').value = 1;
+
 //Função adicionar para o carrinho:
 function adicionar() {
 
@@ -48,6 +54,8 @@ function adicionar() {
     let totalCarrinho = document.getElementById('valor-total');
     totalCarrinho.innerHTML = `<span class="texto-azul" id="valor-total">R$${custCarrinho.reduce((a, b) => a + b, 0)}</span>`;
 
+    //Zerar Value:
+    document.getElementById('quantidade').value = 1;
 }
 
 //Função limpar carrinho:
