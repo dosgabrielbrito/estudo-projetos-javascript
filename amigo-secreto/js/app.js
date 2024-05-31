@@ -17,6 +17,12 @@ function adicionar() {
     //Obter nome do input:
     let nomeAmigo = document.getElementById('nome-amigo').value;
 
+    //Verificar validade do nome:
+    if (nomeAmigo == '') {
+        alert('Insira nome válido!');
+        return;
+    }
+
     //Verificar nome e adicionar:
     if (!listaAmigos.includes(nomeAmigo)) {
         listaAmigos.push(nomeAmigo);
