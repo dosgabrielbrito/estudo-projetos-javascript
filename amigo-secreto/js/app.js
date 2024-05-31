@@ -2,6 +2,15 @@
 let listaAmigos = [];
 let listaPresentes = [];
 
+//Resetar dados:
+function reiniciar() {
+    listaAmigos = [];
+    listaPresentes = [];
+    document.getElementById('nome-amigo').value = '';
+    document.getElementById('lista-amigos').textContent = '';
+    document.getElementById('lista-sorteio').innerHTML = '';
+}
+
 //Adicionar nomes:
 function adicionar() {
 
@@ -17,6 +26,7 @@ function adicionar() {
 
     //Imprimir lista atualizada:
     document.getElementById('lista-amigos').textContent = listaAmigos;
+    document.getElementById('nome-amigo').value = '';
 }
 
 //Sorteio de nomes:
@@ -25,6 +35,12 @@ function sortear() {
     //Checar quantidade:
     if (listaAmigos.length < 3) {
         alert('Amigo secreto com menos de duas pessoas não é recomendado. Adicione pelo menos 3 amigos na lista.');
+        return;
+    }
+
+    //Checar sorteio já realizado:
+    if (listaPresentes.length > 0) {
+        alert('Sorteiro já realizado. Reinicie o sorteador.');
         return;
     }
 
