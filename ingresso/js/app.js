@@ -9,11 +9,11 @@ function comprar() {
     let qtdeSuper = parseInt(document.getElementById('qtd-superior').textContent);
     let qtdeInfer = parseInt(document.getElementById('qtd-inferior').textContent);
 
-    //Array de ingressos disponíveis:
-    let totalIngressos = [qtdePista, qtdeSuper, qtdeInfer];
-
-    //Contador de ingressos:
-    dispoIngressos = totalIngressos[tipoIngresso] - qtdeIngresso;
+    //Quantidade inválida:
+    if (!Number.isInteger(qtdeIngresso) || qtdeIngresso < 1) {
+        alert('Insira uma quantidade válida!');
+        return;
+    }
 
     //Quantidade máxima:
     qtdeMaxima = 50;
@@ -22,6 +22,12 @@ function comprar() {
         document.getElementById('qtd').value = '';
         return;
     }
+
+    //Array de ingressos disponíveis:
+    let totalIngressos = [qtdePista, qtdeSuper, qtdeInfer];
+
+    //Contador de ingressos:
+    dispoIngressos = totalIngressos[tipoIngresso] - qtdeIngresso;
 
     if (totalIngressos[tipoIngresso] > 0 && dispoIngressos >= 0) {
         //Caso de sobra de ingressos:
